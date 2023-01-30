@@ -6,8 +6,9 @@
  */
 
 import React from 'react';
-// import type {PropsWithChildren} from 'react';
+import type {PropsWithChildren} from 'react';
 import {
+  Image,
   // Button,
   Pressable,
   SafeAreaView,
@@ -22,41 +23,41 @@ import {
 
 import {
   Colors,
-  // DebugInstructions,
+  DebugInstructions,
   // Header,
-  // LearnMoreLinks,
-  // ReloadInstructions,
+  LearnMoreLinks,
+  ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-// type SectionProps = PropsWithChildren<{
-//   title: string;
-// }>;
+type SectionProps = PropsWithChildren<{
+  title: string;
+}>;
 
-// function Section({children, title}: SectionProps): JSX.Element {
-//   const isDarkMode = useColorScheme() === 'dark';
-//   return (
-//     <View style={styles.sectionContainer}>
-//       <Text
-//         style={[
-//           styles.sectionTitle,
-//           {
-//             color: isDarkMode ? Colors.white : Colors.black,
-//           },
-//         ]}>
-//         {title}
-//       </Text>
-//       <Text
-//         style={[
-//           styles.sectionDescription,
-//           {
-//             color: isDarkMode ? Colors.light : Colors.dark,
-//           },
-//         ]}>
-//         {children}
-//       </Text>
-//     </View>
-//   );
-// }
+function Section({children, title}: SectionProps): JSX.Element {
+  const isDarkMode = useColorScheme() === 'dark';
+  return (
+    <View style={styles.sectionContainer}>
+      <Text
+        style={[
+          styles.sectionTitle,
+          {
+            color: isDarkMode ? Colors.white : Colors.black,
+          },
+        ]}>
+        {title}
+      </Text>
+      <Text
+        style={[
+          styles.sectionDescription,
+          {
+            color: isDarkMode ? Colors.light : Colors.dark,
+          },
+        ]}>
+        {children}
+      </Text>
+    </View>
+  );
+}
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -74,10 +75,14 @@ function App(): JSX.Element {
       <ScrollView>
         {/* <Header /> */}
         <View style={styles.sectionView}>
-          <Pressable style={styles.button}>
-            <Text style={styles.text}>Track time!</Text>
+          <Pressable style={styles.roundButton1}>
+            {/* <Text style={styles.text}>▶️</Text> */}
+            <Image
+              style={styles.playImage}
+              source={require('./imageplay.png')}
+            />
           </Pressable>
-          {/* <Section title="Step One">
+          <Section title="Step One">
             Edit <Text style={styles.highlight}>App.tsx</Text> to change this
             screen and then come back to see your edits.
           </Section>
@@ -90,7 +95,7 @@ function App(): JSX.Element {
           <Section title="Learn More">
             Read the docs to discover what to do next:
           </Section>
-          <LearnMoreLinks /> */}
+          <LearnMoreLinks />
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -121,8 +126,21 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     borderRadius: 4,
     elevation: 3,
-    backgroundColor: 'black',
+    backgroundColor: '#ff66ff',
     // margin: 100,
+  },
+  roundButton1: {
+    width: 50,
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 10,
+    borderRadius: 100,
+    backgroundColor: '#ff66ff',
+  },
+  playImage: {
+    width: 20,
+    height: 20,
   },
   text: {
     fontSize: 16,
